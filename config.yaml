@@ -1,0 +1,21 @@
+storage: ./storage
+
+auth:
+  ./authentication-plugin:
+    accept_user: foo
+    with_password: bar
+
+  ./authorization-plugin:
+    allow_user: foo
+    to_access: private-one
+
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+
+packages:
+  'private-*':
+    plugin_please_handle_this: true
+
+  '*':
+    allow_access: $authenticated
